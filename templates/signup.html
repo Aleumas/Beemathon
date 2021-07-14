@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+    <!-- Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-database.js"></script>
+    <script src="{{url_for('static', filename='javascript/signup.js')}}"></script> 
+
+    <!-- Links -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Head -->
+    <head>
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/signup_style.css') }}">
+    </head>
+    
+    <!-- Body -->
+    <body>
+        <div class='background'>
+            <div class='sign-in__container'>
+                <div class='sign-in__content load-animation'>
+                    <h1> Sign up </h1>
+                    <input id="name" placeholder="Business name*">
+                    <input id="phoneNumber" placeholder="Phone number*">
+                    <input id="email" placeholder="Email*">
+                    <input id="password" type='password' placeholder="Password*">
+                    <button onclick="handleSignup()"> Sign Up </button>
+                    <hr>
+                    <p> Already a member? <a href='./'> Sign in </a> </p>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>
