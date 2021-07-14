@@ -1,0 +1,134 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fafafa;
+}
+
+a {
+    text-decoration: none;
+}
+
+table {
+  height: 45vmax;
+  width: 30vmax;
+  border-radius: 0.7vmax;
+}
+
+table, th, td {
+  font-family: montserrat;
+  font-weight: 500;
+}
+
+tr, th, td {
+  padding: 10px;
+  float: left;
+  vertical-align: top;
+}
+
+textarea {
+  width: 60vmax;
+  margin: 15px;
+  font-weight: 700;
+  font-size: small;
+  font-family: Montserrat;
+  border-radius: 1vh;
+  background-color: white;
+  margin: 15px;
+  box-shadow: 0 0 20px #F8F8F8;
+  border-style: solid;
+  border-width: 0;
+}
+
+.signout {
+  padding: 0.7vmax 1.5vmax;
+  color: #3AA05F;
+  background-color: white;
+  font-family: montserrat;
+  font-weight: 500;
+  font-size: 1.2vmax;
+  border-radius: 0.7vmax;
+  border: none;
+}
+
+.send {
+  padding: 0.7vmax 1.5vmax;
+  color: white;
+  background-color: #3AA05F;
+  font-family: montserrat;
+  font-weight: 500;
+  font-size: 1.2vmax;
+  border-radius: 0.7vmax;
+  border: none;
+  margin: 15px;
+}
+
+.estimate {
+  padding: 20px;
+  margin: 15px;
+  width: 20%;
+  background-color: white;
+  box-shadow: 0 0 20px #F8F8F8;
+  border-radius: 0.7vmax;
+}
+
+.cost-title {
+  margin: 0;
+  font-family: montserrat;
+  font-weight: 500;
+}
+
+.cost {
+  margin: 0;
+  margin-bottom: 5px;
+  font-family: montserrat;
+  font-weight: 600;
+  color: #212529;
+}
+.navbar {
+  background-color: #3AA05F;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar a {
+  color: #e7e7e7;
+}
+
+.navbar ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar .brand {
+  display: block;
+  color: #e7e7e7;
+  padding: 0 24px;
+  font-size: 20px;
+  font-family: montserrat;
+  font-weight: 700;
+}
+
+.navbar ul li a {
+  color: #e7e7e7;
+  padding: 24px;
+  display: block;
+  font-family: montserrat;
+  font-weight: 400;
+}
+
+.navbar ul a:hover,
+.navbar ul a:focus {
+  font-weight: 600;
+}
+
+.navbar ul a:hover,
+.navbar ul a:focus,
+.navbar ul .active {
+  font-weight: 600;
+}
+

@@ -1,9 +1,37 @@
 <!DOCTYPE html>
-
 <html>
+
+	<!-- Links -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+	<!-- Head -->
 	<head>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/home_style.css')}}">
 	</head>
+
+	<!-- Body -->
 	<body>
-		<h1> Hello World !!! </h1>
+		<nav class='navbar'>
+			<a class="brand" href="#">JM</a>
+			<ul>
+				<li><a class="active" href="#">Community</a></li>
+				<li><a href="#">Feedback</a></li>
+				<li><a href="#">Share</a></li>
+			</ul>
+			<button class="signout">Sign out</button>
+		</nav>
+		<!--
+		<table>
+			<tr><th> Community members </th></tr>
+			<tr><td>John Doe</td></tr>
+		</table>
+		-->	
+		<textarea type="text" id="message" name="message" placeholder="Write a message to your community (max 160 characters)" maxlength="160" rows="5" cols="50"></textarea>
+		<div class="estimate"> 
+			<h1 class="cost"> 100 TSH </h1>
+			<h4 class="cost-title"> Estimated cost </h4>
+		</div>
+		<button class="send" onclick="send()"> Send to community </button>
 	</body>
 </html>
