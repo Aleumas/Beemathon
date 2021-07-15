@@ -23,11 +23,13 @@
             <div class='sign-in__container'>
                 <div class='sign-in__content load-animation'>
                     <h1> Sign up </h1>
-                    <input id="name" placeholder="Business name*">
-                    <input id="phoneNumber" placeholder="Phone number*">
-                    <input id="email" placeholder="Email*">
-                    <input id="password" type='password' placeholder="Password*">
-                    <button onclick="handleSignup()"> Sign Up </button>
+                    <form action="#"  method="post">
+                        <input id="name" name="name" placeholder="Business name*">
+                        <input id="phoneNumber" name="phoneNumber" placeholder="Phone number*">
+                        <input id="email" name="email" placeholder="Email*">
+                        <input id="password" type='password' name="password" placeholder="Password*">
+                        <button type="submit"> Sign Up </button>
+                    </form>
                     <hr>
                     <p> Already a member? <a href='./'> Sign in </a> </p>
                 </div>

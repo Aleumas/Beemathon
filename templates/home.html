@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 
+	<!-- Scripts -->
+
 	<!-- Links -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -11,7 +13,7 @@
 	</head>
 
 	<!-- Body -->
-	<body>
+	<body onload="show_sms_status()">
 		<nav class='navbar'>
 			<a class="brand" href="#">JM</a>
 			<ul>
@@ -27,11 +29,13 @@
 			<tr><td>John Doe</td></tr>
 		</table>
 		-->	
-		<textarea type="text" id="message" name="message" placeholder="Write a message to your community (max 160 characters)" maxlength="160" rows="5" cols="50"></textarea>
-		<div class="estimate"> 
-			<h1 class="cost"> 100 TSH </h1>
-			<h4 class="cost-title"> Estimated cost </h4>
-		</div>
-		<button class="send" onclick="send()"> Send to community </button>
+		<form action="/home/community/send" method="post">
+			<textarea type="text" id="message" name="message" placeholder="Write a message to your community (max 160 characters)" maxlength="160" rows="5" cols="50"></textarea>
+			<div class="estimate"> 
+				<h1 class="cost"> 100 TSH </h1>
+				<h4 class="cost-title"> Estimated cost </h4>
+			</div>
+			<button class="send" type="submit"> Send to community </button>
+		</form>
 	</body>
 </html>

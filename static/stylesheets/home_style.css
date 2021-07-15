@@ -132,3 +132,9 @@ textarea {
   font-weight: 600;
 }
 
+.sms_deliver_status {
+  display: none;
+  font-family: montserrat;
+  font-weight: 400;
+}
+
