@@ -140,7 +140,7 @@ def USSDCallback():
 
             payload_data = {
                 'request_id': '0',
-                'request': request_message
+                'request': str(request_id)
             }
 
             newData = {
