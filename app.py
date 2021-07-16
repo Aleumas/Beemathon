@@ -119,11 +119,13 @@ def USSDCallback():
             session_id1=data['session_id']
             myresponse=data['payload']['response']
             payload_data={}
-            request_id = data['payload']['request_id']
+            request_id = 0
+            if data['payload']['request_id']:
+                request_id = data['payload']['request_id']
 
 
-            ussd_menu = [{ text: "enter phone number" }, { text: "enter name" }]
-            request = ussd_menu[request_id].text
+            ussd_menu = [{ "text" : "enter phone number" }, { "text": "enter name" }]
+            request = ussd_menu[request_id]['text']
             request_id += 1
             command = "terminate" if request_id == len(ussd_menu) else "continue"
 
