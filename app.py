@@ -22,6 +22,7 @@ firebase = pyrebase.initialize_app(firebaseConfig)
 auth = firebase.auth()
 database = firebase.database()
 uid = ""
+category = ""
 
 ''' == Pages == '''
 
@@ -33,10 +34,12 @@ def signup():
         email = request.form["email"]
         password = request.form["password"]
         phone_number = request.form["phoneNumber"]
+        global category
+        category = request.form["category"]
         user = auth.create_user_with_email_and_password(email, password)
         global uid
-        uid = user['idToken'][:11]
-        database.child("users").child(uid).update({
+        uid = user['localId']
+        database.child(category).child("buisnesses").child(uid).update({
             "name": name,
             "phoneNumber": phone_number
         })
@@ -65,7 +68,7 @@ def send():
                 'dest_addr': '255692189307',
             },
         ]
-        name = database.child("users").child(uid).child("name").get().val()
+        name = database.child("buisnesses").child(uid).child("name").get().val()
         return redirect(url_for("send_sms", name=name, message=message,recipients=recipients))
     else:
         return redirect(url_for("community"))
@@ -133,6 +136,7 @@ def USSDCallback():
                     'payload':payload_data
                 }
 
+                # database.child(category).child(recipients).update()
                 return Response(
                     json.dumps(newData),
                     status=200,

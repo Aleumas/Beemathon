@@ -22,12 +22,20 @@
         <div class='background'>
             <div class='sign-in__container'>
                 <div class='sign-in__content load-animation'>
+                    <h3 class="brand"> JK </h3>
                     <h1> Sign up </h1>
                     <form action="#"  method="post">
                         <input id="name" name="name" placeholder="Business name*">
                         <input id="phoneNumber" name="phoneNumber" placeholder="Phone number*">
+                        <select name="category" id='category' bind:value={access} placeholder="access" required>
+                            <option value=''disabled selected> category* </option>
+                            <option value='food'> food </option>
+                            <option value='technology'> technology </option>
+                            <option value='other'> other </option>
+                        </select>
                         <input id="email" name="email" placeholder="Email*">
                         <input id="password" type='password' name="password" placeholder="Password*">
+                        
                         <button type="submit"> Sign Up </button>
                     </form>
                     <hr>

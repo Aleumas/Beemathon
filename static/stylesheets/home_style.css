@@ -34,9 +34,9 @@ textarea {
   border-radius: 1vh;
   background-color: white;
   margin: 15px;
-  box-shadow: 0 0 20px #F8F8F8;
+  border-color: black;
   border-style: solid;
-  border-width: 0;
+  border-width: 2px;
 }
 
 .signout {
@@ -51,6 +51,7 @@ textarea {
 }
 
 .send {
+  display: block;
   padding: 0.7vmax 1.5vmax;
   color: white;
   background-color: #3AA05F;
@@ -86,6 +87,7 @@ textarea {
 }
 .navbar {
   background-color: #3AA05F;
+  color: #3AA05F;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -108,9 +110,14 @@ textarea {
   display: block;
   color: #e7e7e7;
   padding: 0 24px;
+  margin-right: 350px;
   font-size: 20px;
   font-family: montserrat;
   font-weight: 700;
+}
+
+.navbar button {
+  margin-left: 350px;
 }
 
 .navbar ul li a {

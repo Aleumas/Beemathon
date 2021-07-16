@@ -13,7 +13,7 @@
 	</head>
 
 	<!-- Body -->
-	<body onload="show_sms_status()">
+	<body>
 		<nav class='navbar'>
 			<a class="brand" href="#">JM</a>
 			<ul>
@@ -21,20 +21,12 @@
 				<li><a href="#">Feedback</a></li>
 				<li><a href="/home/share/ussd/callback">Share</a></li>
 			</ul>
-			<button class="signout">Sign out</button>
+			<form action="/">
+				<button class="signout" type="submit"> Sign out </button>
+			</form>
 		</nav>
-		<!--
-		<table>
-			<tr><th> Community members </th></tr>
-			<tr><td>John Doe</td></tr>
-		</table>
-		-->	
 		<form action="/home/community/send" method="post">
 			<textarea type="text" id="message" name="message" placeholder="Write a message to your community (max 160 characters)" maxlength="160" rows="5" cols="50"></textarea>
-			<div class="estimate"> 
-				<h1 class="cost"> 100 TSH </h1>
-				<h4 class="cost-title"> Estimated cost </h4>
-			</div>
 			<button class="send" type="submit"> Send to community </button>
 		</form>
 	</body>
