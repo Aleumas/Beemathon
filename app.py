@@ -103,8 +103,8 @@ def send_sms(name, message, recipients):
 
     return redirect(url_for("community"))
 
-# USSD
-@app.route('/home/share',methods=['GET','POST'])
+# USSD callback
+@app.route('/home/share/ussd/callback',methods=['GET','POST'])
 def USSDCallback():
     if request.method == 'POST':
         data = request.get_json()
