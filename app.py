@@ -120,27 +120,26 @@ def USSDCallback():
             command1= 'command'#data['command']
             myresponse=data['payload']['response']
             payload_data={}
+            # if myresponse == '0':
+            payload_data={
+                'request_id':'0',
+                'request':'1. enter first phone number'
+            }
+            command1 = 'continue-1*1'
 
-            if myresponse == '0':
-                payload_data={
-                    'request_id':'0',
-                    'request':'1. enter first phone number'
-                }
-                command1 = 'continue-1*1'
+            newData = {
+                'msisdn':msisdn1,
+                'operator':operator1,
+                'session_id':session_id1,
+                'command':command1,
+                'payload':payload_data
+            }
 
-                newData = {
-                    'msisdn':msisdn1,
-                    'operator':operator1,
-                    'session_id':session_id1,
-                    'command':command1,
-                    'payload':payload_data
-                }
-
-                # database.child(category).child(recipients).update()
-                return Response(
-                    json.dumps(newData),
-                    status=200,
-                )
+            # database.child(category).child(recipients).update()
+            return Response(
+                json.dumps(newData),
+                status=200,
+            )
     else:
         newData = {
          'msisdn':'255762265939',
