@@ -1,44 +1,5 @@
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #fafafa;
-}
 
-a {
-    text-decoration: none;
-}
-
-table {
-  height: 45vmax;
-  width: 30vmax;
-  border-radius: 0.7vmax;
-}
-
-table, th, td {
-  font-family: montserrat;
-  font-weight: 500;
-}
-
-tr, th, td {
-  padding: 10px;
-  float: left;
-  vertical-align: top;
-}
-
-textarea {
-  width: 60vmax;
-  margin: 15px;
-  font-weight: 700;
-  font-size: small;
-  font-family: Montserrat;
-  border-radius: 1vh;
-  background-color: white;
-  margin: 15px;
-  border-color: black;
-  border-style: solid;
-  border-width: 2px;
-}
-
+/* == Classes == */
 .signout {
   padding: 0.7vmax 1.5vmax;
   color: #3AA05F;
@@ -50,6 +11,16 @@ textarea {
   border: none;
 }
 
+.account-title {
+  margin: 0;
+  font-weight: 500;
+  color: #6d758d;
+}
+
+.account-info {
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
 .send {
   display: block;
   padding: 0.7vmax 1.5vmax;
@@ -63,21 +34,6 @@ textarea {
   margin: 15px;
 }
 
-.estimate {
-  padding: 20px;
-  margin: 15px;
-  width: 20%;
-  background-color: white;
-  box-shadow: 0 0 20px #F8F8F8;
-  border-radius: 0.7vmax;
-}
-
-.cost-title {
-  margin: 0;
-  font-family: montserrat;
-  font-weight: 500;
-}
-
 .cost {
   margin: 0;
   margin-bottom: 5px;
@@ -85,6 +41,7 @@ textarea {
   font-weight: 600;
   color: #212529;
 }
+
 .navbar {
   background-color: #3AA05F;
   color: #3AA05F;
@@ -139,9 +96,76 @@ textarea {
   font-weight: 600;
 }
 
-.sms_deliver_status {
-  display: none;
+.navbar ul .active {
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-thickness: 2px;
+}
+
+/* == Other == */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fafafa;
+}
+
+a {
+    text-decoration: none;
+}
+
+table {
+  height: 45vmax;
+  width: 30vmax;
+  border-radius: 0.7vmax;
+}
+
+table, th, td {
   font-family: montserrat;
-  font-weight: 400;
+  font-weight: 500;
+}
+
+tr, th, td {
+  padding: 10px;
+  float: left;
+  vertical-align: top;
+}
+
+textarea {
+  width: 60vmax;
+  margin: 15px;
+  font-weight: 700;
+  font-size: small;
+  font-family: Montserrat;
+  border-radius: 1vh;
+  background-color: white;
+  margin: 15px;
+  border-color: black;
+  border-style: solid;
+  border-width: 2px;
+  resize: none;
+}
+
+textarea::placeholder {
+  color: rgba(96, 101, 123, 0.9);
+}
+
+h2 {
+  font-family: Montserrat;
+  margin: 15px;
+  color: #2b2d38;
+}
+
+h3 {
+  font-family: Montserrat;
+  font-weight: 600;
+  color: #60657b;
+  margin: 15px;
+}
+
+h4 {
+  padding-left: 1%;
+  font-weight: 500;
+  font-family: Montserrat;
 }
 

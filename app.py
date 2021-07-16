@@ -25,7 +25,6 @@ uid = ""
 category = ""
 
 ''' == Pages == '''
-
 # Signup
 @app.route("/", methods=["POST", "GET"])
 def signup():
@@ -91,12 +90,7 @@ def send_sms(name, message, recipients):
         'schedule_time': '',
         'encoding': '0',
         'message': formatted_message,
-        'recipients': [
-            {
-                'recipient_id': 1,
-                'dest_addr': '255692189307',
-            },
-        ],
+        'recipients': recipients,
     }),
 
     headers = {
@@ -106,6 +100,18 @@ def send_sms(name, message, recipients):
     auth=(api_key,secret_key),verify=False)
 
     return redirect(url_for("community"))
+
+# Info
+@app.route('/home/info')
+def info():
+    name = database.child("businesses").child(category).child(uid).child("name").get().val()
+    number = database.child("businesses").child(category).child(uid).child("phoneNumber").get().val()
+    return render_template('info.html', name=name, number=number, category=category, ussd='123# (hardcoded)')
+
+# Feedback 
+@app.route('/home/feedback')
+def feedback():
+    return render_template('feedback.html')
 
 # USSD callback
 @app.route('/home/share/ussd/callback',methods=['GET','POST'])
