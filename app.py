@@ -62,12 +62,10 @@ def community():
 def send():
     if (request.method == "POST"):
         message = request.form["message"]
-        recipients =  [
-            {
-                'recipient_id': 1,
-                'dest_addr': '255692189307',
-            },
-        ]
+        recipients = []
+        stored_recipients = database.child("recipients").get().val()
+        for subscriber_id, phone_number in stored_recipients.items():
+            recipients.append({"request_id": subscriber_id, "request": phone_number})
         name = database.child("businesses").child(category).child(uid).child("name").get().val()
         return redirect(url_for("send_sms", name=name, message=message,recipients=recipients))
     else:
