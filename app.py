@@ -113,6 +113,8 @@ def USSDCallback():
         data = request.get_json()
         if data:
             print(data)
+            app.logger.info('testing info log')
+            app.logger.info(data)
             print(data['payload']['response'])
             msisdn1=data['msisdn']
             operator1= 'tigo'#data['operator']
@@ -123,7 +125,7 @@ def USSDCallback():
             # if myresponse == '0':
             payload_data={
                 'request_id':'0',
-                'request':'1. enter first phone number'
+                'request':'1. Test'
             }
 
             newData = {
