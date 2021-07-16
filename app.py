@@ -109,8 +109,7 @@ def send_sms(name, message, recipients):
 # USSD callback
 @app.route('/home/share/ussd/callback',methods=['GET','POST'])
 def USSDCallback():
-    if request.method == 'POST':
-        '''
+    if request.method == 'GET':
         data = {
             "command": "initiate",
             "msisdn": "255692189307",
@@ -121,11 +120,9 @@ def USSDCallback():
                 "response": 0,
             }
         }
-        '''
-        data = request.get_json()
+        #data = request.get_json()
         if data:
             print(data)
-            print(data['payload']['response'])
             msisdn1=data['msisdn']
             operator1= 'tigo'#data['operator']
             session_id1=data['session_id']
@@ -133,16 +130,16 @@ def USSDCallback():
             payload_data={}
             request_id = 0
             if data['payload']['request_id']:
-                request_id = data['payload']['request_id']
-
+                request_id = int(data['payload']['request_id'])
 
             ussd_menu = [{"text": ""}, { "text" : "enter phone number" }, { "text": "enter name" }]
             request_message = ussd_menu[request_id]['text']
             command = "terminate" if request_id + 1 == len(ussd_menu) else "continue"
+            if (data["command"] == "continue"):
+                request_id += 1
 
-            # if myresponse == '0':
             payload_data = {
-                'request_id': request_id,
+                'request_id': string(request_id),
                 'request': request_message
             }
 
@@ -154,7 +151,6 @@ def USSDCallback():
                 'payload':payload_data
             }
 
-            # database.child(category).child(recipients).update()
             return Response(
                 json.dumps(newData),
                 status=200,
