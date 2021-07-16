@@ -141,14 +141,14 @@ def USSDCallback():
 
             payload_data = {
                 'request_id': request_id + 1,
-                'request': str(request_id)
+                'request': ussd_menu[1]["text"]
             }
 
             newData = {
                 'msisdn':msisdn1,
                 'operator':operator1,
                 'session_id':session_id1,
-                'command': 'continue',
+                'command': "terminate",
                 'payload':payload_data
             }
 
