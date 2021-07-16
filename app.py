@@ -39,7 +39,7 @@ def signup():
         user = auth.create_user_with_email_and_password(email, password)
         global uid
         uid = user['localId']
-        database.child(category).child("buisnesses").child(uid).update({
+        database.child("businesses").child(category).child(uid).update({
             "name": name,
             "phoneNumber": phone_number
         })
@@ -68,7 +68,7 @@ def send():
                 'dest_addr': '255692189307',
             },
         ]
-        name = database.child("buisnesses").child(uid).child("name").get().val()
+        name = database.child("businesses").child(category).child(uid).child("name").get().val()
         return redirect(url_for("send_sms", name=name, message=message,recipients=recipients))
     else:
         return redirect(url_for("community"))
@@ -110,25 +110,13 @@ def send_sms(name, message, recipients):
 @app.route('/home/share/ussd/callback',methods=['GET','POST'])
 def USSDCallback():
     if request.method == 'POST':
-        '''
-        data = {
-            "command": "initiate",
-            "msisdn": "255692189307",
-            "session_id": "689970",
-            "operator": "tigotz",
-            "payload": {
-                "request_id": 1,
-                "response": 0,
-            }
-        }
-        '''
         data = request.get_json()
         if data:
             print(data)
             msisdn1=data['msisdn']
             operator1= 'tigo'#data['operator']
             session_id1=data['session_id']
-            myresponse=data['payload']['response']
+            phone_number=data['payload']['response']
             payload_data={}
             request_id = 0
             if data['payload']['request_id']:
@@ -136,9 +124,9 @@ def USSDCallback():
 
             ussd_menu = [{"text": "1. Join Jamii Moja" }, { "text" : "Enter phone number" }, { "text": "Enter name" }]
             #request_message = ussd_menu[request_id]['text']
-            #request_id2 = 0 if request_id == 1 else 1
             command = "terminate" if request_id + 1 == len(ussd_menu) else "continue"
 
+            database.child("recipients").child(phone_number).update()
             payload_data = {
                 'request_id': request_id + 1,
                 'request': ussd_menu[1]["text"]
