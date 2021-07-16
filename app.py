@@ -24,6 +24,8 @@ database = firebase.database()
 uid = ""
 
 ''' == Pages == '''
+
+# Signup
 @app.route("/", methods=["POST", "GET"])
 def signup():
     if (request.method == "POST"):
@@ -42,14 +44,17 @@ def signup():
     else:
         return render_template('signup.html')
 
+# Home
 @app.route("/home")
 def home():
     return redirect(url_for("community"))
 
+# Community
 @app.route("/home/community")
 def community():
         return render_template('home.html')
 
+# SMS
 @app.route("/home/community/send", methods=['GET','POST'])
 def send():
     if (request.method == "POST"):
@@ -65,6 +70,7 @@ def send():
     else:
         return redirect(url_for("community"))
 
+# SMS Request
 @app.route("/home/community/send/<name>/<message>/<recipients>")
 def send_sms(name, message, recipients):
 
@@ -96,6 +102,57 @@ def send_sms(name, message, recipients):
     auth=(api_key,secret_key),verify=False)
 
     return redirect(url_for("community"))
+
+# USSD
+@app.route('/home/share',methods=['GET','POST'])
+def USSDCallback():
+    if request.method == 'POST':
+        data = request.get_json()
+        if data:
+            print(data)
+            print(data['payload']['response'])
+            msisdn1=data['msisdn']
+            operator1= 'tigo'#data['operator']
+            session_id1=data['session_id']
+            command1= 'command'#data['command']
+            myresponse=data['payload']['response']
+            payload_data={}
+
+            if myresponse == '99':
+                payload_data={
+                    'request_id':'0',
+                    'request':'1. enter first phone number'
+                }
+                command1 = 'continue-1*1'
+
+                newData = {
+                    'msisdn':msisdn1,
+                    #'operator':operator1,
+                    'session_id':session_id1,
+                    'command':command1,
+                    'payload':payload_data
+                }
+
+                return Response(
+                    json.dumps(newData),
+                    status=200,
+                )
+    else:
+        newData = {
+         'msisdn':'255762265939',
+         'Operator':'vodacom',
+         'session_id':'14545',
+         'command':'initiate',
+         'payload':{
+             'request_id':'0',
+             'response':'enter phone number'
+            }
+        }
+
+        return Response(
+             json.dumps(newData),
+             status=200,
+        )
 
 @app.errorhandler(500)
 def server_error(e):
