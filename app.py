@@ -150,7 +150,7 @@ def USSDCallback():
                 'msisdn':msisdn1,
                 'operator':operator1,
                 'session_id':session_id1,
-                'command':command,
+                'command': "continue",
                 'payload':payload_data
             }
 
