@@ -125,7 +125,7 @@ def USSDCallback():
                 'request_id':'0',
                 'request':'1. enter first phone number'
             }
-            command1 = 'Terminate'
+            command1 = data['terminate'] 
             #'continue-1*1'
 
             newData = {
