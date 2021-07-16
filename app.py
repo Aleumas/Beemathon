@@ -130,7 +130,7 @@ def USSDCallback():
 
                 newData = {
                     'msisdn':msisdn1,
-                    #'operator':operator1,
+                    'operator':operator1,
                     'session_id':session_id1,
                     'command':command1,
                     'payload':payload_data
