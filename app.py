@@ -125,7 +125,8 @@ def USSDCallback():
                 'request_id':'0',
                 'request':'1. enter first phone number'
             }
-            command1 = 'continue-1*1'
+            command1 = 'continue'
+            #'continue-1*1'
 
             newData = {
                 'msisdn':msisdn1,
