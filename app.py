@@ -134,14 +134,14 @@ def USSDCallback():
             if data['payload']['request_id']:
                 request_id = int(data['payload']['request_id'])
 
-            ussd_menu = [{"text": "1. Join Jamii Moja \n 2. Exit"}, { "text" : "Enter phone number" }, { "text": "Enter name" }]
+            ussd_menu = [{"text": "1. Join Jamii Moja" }, { "text" : "Enter phone number" }, { "text": "Enter name" }]
             request_message = ussd_menu[request_id]['text']
             command = "terminate" if request_id + 1 == len(ussd_menu) else "continue"
             if (data["command"] == "continue" or data["command"] == "initiate"):
                 request_id += 1
 
             payload_data = {
-                'request_id': string(request_id),
+                'request_id': str(request_id),
                 'request': request_message
             }
 
