@@ -138,8 +138,7 @@ def USSDCallback():
 
             ussd_menu = [{"text": ""}, { "text" : "enter phone number" }, { "text": "enter name" }]
             request_message = ussd_menu[request_id]['text']
-            command = "terminate" if request_id == len(ussd_menu) else "continue"
-            request_id += 1
+            command = "terminate" if request_id + 1 == len(ussd_menu) else "continue"
 
             # if myresponse == '0':
             payload_data = {
