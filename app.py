@@ -126,7 +126,7 @@ def USSDCallback():
             #request_message = ussd_menu[request_id]['text']
             command = "terminate" if request_id + 1 == len(ussd_menu) else "continue"
 
-            database.child("recipients").child(phone_number).update()
+            #database.child("recipients").child(phone_number).update()
             payload_data = {
                 'request_id': request_id + 1,
                 'request': ussd_menu[1]["text"]
