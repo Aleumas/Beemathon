@@ -125,13 +125,12 @@ def USSDCallback():
                 'request_id':'0',
                 'request':'1. enter first phone number'
             }
-            command1 = 'terminate-1*1'
 
             newData = {
                 'msisdn':msisdn1,
                 'operator':operator1,
                 'session_id':session_id1,
-                'command':command1,
+                'command':'terminate',
                 'payload':payload_data
             }
 
