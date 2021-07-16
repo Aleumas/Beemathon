@@ -66,8 +66,11 @@ def send():
         stored_recipients = database.child("recipients").get().val()
         for subscriber_id, phone_number in stored_recipients.items():
             recipients.append({"request_id": subscriber_id, "request": phone_number})
-        name = database.child("businesses").child(category).child(uid).child("name").get().val()
-        return redirect(url_for("send_sms", name=name, message=message,recipients=recipients))
+        try:
+            name = database.child("businesses").child(category).child(uid).child("name").get().val()
+            return redirect(url_for("send_sms", name=name, message=message,recipients=recipients))
+        except:
+            return "<h1> can't get name </h1>"
     else:
         return redirect(url_for("community"))
 
