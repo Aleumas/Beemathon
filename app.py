@@ -147,11 +147,11 @@ def USSDCallback():
                 'msisdn':msisdn1,
                 'operator':operator1,
                 'session_id':session_id1,
-                'command': "continue",
+                'command': 'continue',
                 'payload':payload_data
             }
 
-            return Response(
+            return Response (
                 json.dumps(newData),
                 status=200,
             )
