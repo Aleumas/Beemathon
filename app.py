@@ -110,6 +110,18 @@ def send_sms(name, message, recipients):
 @app.route('/home/share/ussd/callback',methods=['GET','POST'])
 def USSDCallback():
     if request.method == 'POST':
+        '''
+        data = {
+            "command": "initiate",
+            "msisdn": "255692189307",
+            "session_id": "689970",
+            "operator": "tigotz",
+            "payload": {
+                "request_id": 1,
+                "response": 0,
+            }
+        }
+        '''
         data = request.get_json()
         if data:
             print(data)
@@ -125,21 +137,21 @@ def USSDCallback():
 
 
             ussd_menu = [{ "text" : "enter phone number" }, { "text": "enter name" }]
-            request = ussd_menu[request_id]['text']
+            request_message = ussd_menu[request_id]['text']
             request_id += 1
             command = "terminate" if request_id == len(ussd_menu) else "continue"
 
             # if myresponse == '0':
             payload_data = {
                 'request_id':'0',
-                'request': request
+                'request': request_message
             }
 
             newData = {
                 'msisdn':msisdn1,
                 'operator':operator1,
                 'session_id':session_id1,
-                'command':"terminate",
+                'command':command,
                 'payload':payload_data
             }
 
