@@ -121,7 +121,7 @@ def USSDCallback():
             myresponse=data['payload']['response']
             payload_data={}
 
-            if myresponse == '99':
+            if myresponse == '0':
                 payload_data={
                     'request_id':'0',
                     'request':'1. enter first phone number'
