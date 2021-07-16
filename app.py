@@ -139,7 +139,7 @@ def USSDCallback():
             command = "terminate" if request_id + 1 == len(ussd_menu) else "continue"
 
             payload_data = {
-                'request_id': str(request_id),
+                'request_id': '0',
                 'request': request_message
             }
 
