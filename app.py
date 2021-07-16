@@ -46,7 +46,7 @@ def signup():
 def home():
     return redirect(url_for("community"))
 
-@app.route("/home/community", methods=['GET','POST'])
+@app.route("/home/community")
 def community():
         return render_template('home.html')
 
