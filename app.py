@@ -117,24 +117,27 @@ def USSDCallback():
             msisdn1=data['msisdn']
             operator1= 'tigo'#data['operator']
             session_id1=data['session_id']
-            command1= 'command'#data['command']
             myresponse=data['payload']['response']
             payload_data={}
-
+            request_id = data['payload']['request_id']
 
 
             ussd_menu = [{ text: "enter phone number" }, { text: "enter name" }]
+            request = ussd_menu[request_id].text
+            request_id += 1
+            command = "terminate" if request_id == len(ussd_menu) else "continue"
+
             # if myresponse == '0':
-            payload_data={
+            payload_data = {
                 'request_id':'0',
-                'request': ['1. Test 1', '2. Test 2']
+                'request': request
             }
 
             newData = {
                 'msisdn':msisdn1,
                 'operator':operator1,
                 'session_id':session_id1,
-                'command':'terminate',
+                'command':command,
                 'payload':payload_data
             }
 
