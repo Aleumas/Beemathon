@@ -109,7 +109,8 @@ def send_sms(name, message, recipients):
 # USSD callback
 @app.route('/home/share/ussd/callback',methods=['GET','POST'])
 def USSDCallback():
-    if request.method == 'GET':
+    if request.method == 'POST':
+        '''
         data = {
             "command": "initiate",
             "msisdn": "255692189307",
@@ -120,7 +121,8 @@ def USSDCallback():
                 "response": 0,
             }
         }
-        #data = request.get_json()
+        '''
+        data = request.get_json()
         if data:
             print(data)
             msisdn1=data['msisdn']
