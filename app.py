@@ -35,16 +35,22 @@ def signup():
         phone_number = request.form["phoneNumber"]
         global category
         category = request.form["category"]
-        user = auth.create_user_with_email_and_password(email, password)
-        global uid
-        uid = user['localId']
-        database.child("businesses").child(category).child(uid).update({
-            "name": name,
-            "phoneNumber": phone_number
-        })
-        return redirect(url_for("community"))
+        try:
+            user = auth.create_user_with_email_and_password(email, password)
+            global uid
+            uid = user['localId']
+            database.child("businesses").child(category).child(uid).update({
+                "name": name,
+                "phoneNumber": phone_number
+            })
+            return redirect(url_for("community"))
+        except:
+            return redirect(url_for("signup", error_message="Change username or password"))
     else:
-        return render_template('signup.html')
+        error_message = request.args.get("error_message")
+        if (error_message == None):
+            error_message = ""
+        return render_template('signup.html', error_message=error_message)
 
 # Home
 @app.route("/home")
@@ -54,7 +60,10 @@ def home():
 # Community
 @app.route("/home/community")
 def community():
-        return render_template('home.html')
+        error_message = request.args.get("error_message")
+        if (error_message == None):
+            error_message = ""
+        return render_template('home.html', error_message=error_message)
 
 # SMS
 @app.route("/home/community/send", methods=['GET','POST'])
@@ -63,13 +72,17 @@ def send():
         message = request.form["message"]
         recipients = []
         stored_recipients = database.child("recipients").get().val()
-        for subscriber_id, phone_number in stored_recipients.items():
-            recipients.append({"request_id": subscriber_id, "request": phone_number})
+        if stored_recipients:
+            for subscriber_id, phone_number in stored_recipients.items():
+                recipients.append({"request_id": subscriber_id, "request": phone_number})
         try:
             name = database.child("businesses").child(category).child(uid).child("name").get().val()
-            return redirect(url_for("send_sms", name=name, message=message,recipients=recipients))
-        except:
-            return "<h1> can't get name </h1>"
+            if len(recipients) > 0:
+                return redirect(url_for("send_sms", name=name, message=message,recipients=recipients))
+            else:
+                return redirect(url_for("community", error_message="No members in your community"))
+        except Exception as e:
+            return f"<h1> {e} </h1>"
     else:
         return redirect(url_for("community"))
 

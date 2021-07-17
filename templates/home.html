@@ -29,6 +29,7 @@
 		<h3> Send your community a message up to 160 characters <br> about upcoming promotions, events, deals, etc. </h3>
 		<form action="/home/community/send" method="post">
 			<textarea type="text" id="message" name="message" placeholder="Start writing here." maxlength="160" rows="5" cols="50"></textarea>
+			<p class="error"> {{ error_message }} </p>
 			<button class="send" type="submit"> Send to community </button>
 		</form>
 	</body>

@@ -34,8 +34,7 @@
     }
     
     .error {
-        margin-bottom: 5vh;
-        margin-top: -1vh;
+        margin-top: -7vh;
         color: red;
     }
 
@@ -101,9 +100,11 @@
     select:invalid {
         color: #c4c4c4;
     }
+
     select option:first-child{
         color: #c4c4c4;
     }
+
     input {
         display: block;
         width: 70%;
@@ -119,7 +120,6 @@
         border-color: #212529;
         border-width: 2px;
         border-style: solid;
-        
     }
 
     button {
@@ -140,6 +140,7 @@
     }
 
     hr {
+        margin-top: -5vh;
         width: 70%;
         height: 2px;
         border: none;
@@ -150,6 +151,8 @@
         float: left;
         padding-left: 15%;
         font-weight: 500;
+        margin: 0;
+        padding-bottom: 1vh;
     }
 
     a {

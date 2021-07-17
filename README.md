@@ -1,2 +1,7 @@
-# Beemathon
-Beem API hackathon
+## Problem
+
+## Project goal
+
+## Architecture
+
+## Run through
