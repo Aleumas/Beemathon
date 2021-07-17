@@ -78,6 +78,7 @@ def send():
         try:
             name = database.child("businesses").child(category).child(uid).child("name").get().val()
             if len(recipients) > 0:
+                print("yes")
                 return redirect(url_for("send_sms", name=name, message=message,recipients=recipients))
             else:
                 return redirect(url_for("community", error_message="No members in your community"))
