@@ -23,7 +23,7 @@ Jamii Moja enables SMEs to engage with their customer base by letting them SMS a
 
 # How to deploy
 
-visit this [link](https://www.geeksforgeeks.org/deploy-python-flask-app-on-heroku/)
+Jamii Moja uses Heroku to deploy. Vist this [article](https://www.geeksforgeeks.org/deploy-python-flask-app-on-heroku/) to learn more
 
 # Future improvements
 
