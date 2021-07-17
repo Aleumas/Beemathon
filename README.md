@@ -16,6 +16,7 @@ Jamii Moja enables SMEs to engage with their customer base by letting them SMS a
 
 # Architecture
 
+* Flask web server
 * Beem USSD API
 * Beem SMS API
 * Firebase auth
