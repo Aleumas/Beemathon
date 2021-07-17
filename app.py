@@ -69,16 +69,20 @@ def community():
 @app.route("/home/community/send", methods=['GET','POST'])
 def send():
     if (request.method == "POST"):
-        message = request.form["message"]
-        recipients = []
-        stored_recipients = database.child("recipients").get().val()
-        if stored_recipients:
-            for subscriber_id, phone_number in stored_recipients.items():
-                recipients.append({"request_id": subscriber_id, "request": phone_number})
+
         try:
+            message = request.form["message"]
+            recipients = ""
+            stored_recipients = database.child("recipients").get().val()
+            if stored_recipients:
+                for phone_number in stored_recipients.values():
+                    if len(recipients) == 0:
+                        recipients += phone_number
+                    else:
+                        recipients +=  "," + phone_number
             name = database.child("businesses").child(category).child(uid).child("name").get().val()
-            if len(recipients) > 0:
-                print("yes")
+            if len(recipients) > 0 and name != None:
+                print(name, message, recipients)
                 return redirect(url_for("send_sms", name=name, message=message,recipients=recipients))
             else:
                 return redirect(url_for("community", error_message="No members in your community"))
@@ -98,13 +102,19 @@ def send_sms(name, message, recipients):
     content_type = 'application/json'
     source_addr = 'INFO'
     apikey_and_apisecret = api_key + ':' + secret_key
+    phone_number_list = recipients.split(",")
+    recipients_list = []
+    print(recipients_list)
 
+    for index, phone_number in enumerate(phone_number_list, 1):
+        recipients_list.append({"recipient_id": index, "dest_addr": phone_number})
     first_request = requests.post(url = URL,data = json.dumps({
         'source_addr': source_addr,
         'schedule_time': '',
         'encoding': '0',
         'message': formatted_message,
-        'recipients': recipients,
+        'recipients': recipients_list
+        #[{'request_id': 1, 'request': ''}]
     }),
 
     headers = {
