@@ -32,4 +32,4 @@ Jamii Moja uses Heroku to deploy. Vist this [article](https://www.geeksforgeeks.
 # Future improvements
 
 1. Add feedback option to USSD and develop feedback page
-2. Allow SMEs to develope customer profiles
+2. Allow SMEs to develop customer profiles
